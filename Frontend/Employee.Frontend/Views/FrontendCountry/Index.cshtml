@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Employee.Frontend.Models.Countrys>
+
+@{
+    ViewData["Title"] = "Country Index";
+}
+
+<h1>Country Index</h1>
+
+<p>
+    <a asp-action="AddorEdit">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courencies)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courencies)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-Id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-Id="@item.Id" onclick="return confirm('Are You Sure?You Want to delete this?')">Delete</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
